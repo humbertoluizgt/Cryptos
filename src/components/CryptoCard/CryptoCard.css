@@ -1,0 +1,82 @@
+.crypto_card--card {
+  height: 75px;
+  width: 80%;
+  background-color: white;
+  padding: 0 15px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-bottom: 10px;
+}
+
+.crypto_card--card:hover {
+  opacity: 0.7;
+}
+
+.crypto_card--card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.crypto_card--card-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.crypto_card--card-img img {
+  height: 60%;
+}
+
+.crypto_card--card-id {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.crypto_card--favourite,
+.crypto_card--wallet {
+  display: none;
+  margin: 1rem;
+}
+
+.crypto_card--card:hover .crypto_card--favourite,
+.crypto_card--card:hover .crypto_card--wallet {
+  display: block;
+}
+
+
+.crypto_card--card-id h1 {
+  font-size: 2.2rem;  
+}
+
+.crypto_card--card-id h2 {
+  font-size: 1.2rem;
+}
+
+.crypto_card--card-price {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.crypto_card--card-price h1 {
+  font-size: 1.8rem;
+}
+
+.crypto_card--card-price h2 {
+  font-size: 1.5rem;
+}
+
+.dark-card {
+  color: white;
+  background-color: rgb(59, 59, 59);
+}

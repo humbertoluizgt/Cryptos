@@ -1,0 +1,47 @@
+.settings--title {
+  font-size: 2.5rem;
+}
+
+.settings--dark-mode,
+.settings--currency,
+.settings--decimal-cases {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.settings--dark-mode-icon {
+  cursor: pointer;
+}
+
+select {
+  height: 3rem;
+  width: 25rem;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings--decimal-cases select {
+  width: 5rem;
+}
+
+option {
+  font-size: 1.5rem;
+}

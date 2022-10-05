@@ -1,0 +1,158 @@
+.add_to_wallet--container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  height: 40rem;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  
+  background-color: rgb(241, 241, 241);
+  color: black;
+  font-size: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.add_to_wallet--options {
+  display: flex;
+  width: 100%;  
+}
+
+.add_to_wallet--options button {
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 3rem;
+  color: white;
+  background-color: white;
+  transition: all 0.15s;
+  border: none;  
+  cursor: pointer;
+}
+
+.add_to_wallet--options button:first-of-type {
+  background-color: green;
+}
+
+.add_to_wallet--options button:last-of-type {
+  background-color: rgb(180, 55, 55);
+}
+
+.add_to_wallet--options button:hover {
+  opacity: 0.8;
+}
+
+.add_to_wallet--options button:active {
+  opacity: 0.8;
+  font-size: 2rem;
+}
+
+.add_to_wallet--content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add_to_wallet--content-right,
+.add_to_wallet--content-left {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add_to_wallet--content-left img {  
+  margin: 1.5rem 0;
+  width: 8rem;
+}
+
+.add_to_wallet--content-left h2 {  
+  font-size: 2rem;
+}
+
+.add_to_wallet--content-left h2:last-of-type {  
+  margin: 2rem 1rem;
+  font-size: 1.5rem;
+}
+
+.add_to_wallet--content-left h2:last-of-type {  
+  align-self: flex-start;
+}
+
+.add_to_wallet--stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.add_to_wallet--stats h3 {
+  margin: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.add_to_wallet--inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+
+.add_to_wallet--inputs label {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.add_to_wallet--inputs input {
+  height: 3rem;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-left: 1.5rem;
+  background-color: rgb(223, 223, 223);
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.6rem;
+  border: none;
+}
+
+.add_to_wallet--inputs h2 {
+  font-size: 2rem; 
+  margin-top: 1rem;
+}
+
+.add_to_wallet--inputs h2:last-of-type {
+  margin-top: 0
+}
+
+.add_to_wallet--cancel {
+  height: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-left: 0.6rem;
+  background-color: rgb(253, 221, 221);
+  box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+}
+
+.add_to_wallet--cancel:hover {
+  opacity: 0.8;
+}
+
+.add_to_wallet--cancel:active {
+  opacity: 0.5;
+}

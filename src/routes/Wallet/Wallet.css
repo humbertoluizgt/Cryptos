@@ -1,0 +1,69 @@
+.wallet--content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.wallet--title {
+  font-size: 2.5rem;
+}
+
+table {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+thead {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+tbody {
+  font-size: 1.5rem;
+}
+
+td, th {
+  text-align: center;
+  height: 6rem;
+  width: 4rem;
+  border: 1px solid rgb(146, 146, 146);
+}
+
+img {
+  width: 4rem;
+}
+
+.wallet--icon {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.wallet--icon:hover {
+  cursor: pointer;
+  color: rgb(240, 114, 114);
+}
+
+.wallet--summary {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.wallet--summary h2 {
+  letter-spacing: 0.1rem;
+  margin: 0.8rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+  tbody {
+    font-size: 1.2rem;
+  }
+}
