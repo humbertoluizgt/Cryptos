@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './Wallet.css'
+import { Context } from '../../context/ThemeContext'
 import Modal from '../../components/Modal/Modal'
 import { convertToCurrency } from '../../helper/helper'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWallet, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-export default function Wallet(props) {
-
+export default function Wallet() {
+  const context = useContext(Context)
   //fetching data from API url 
   useEffect( () => { 
     // const interval = setInterval( () => {
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${props.settings.currency.code}`)
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${context.settings.currency.code}`)
       .then( response => response.json())
       .then ( data => setDataAPI( [...data] ) ) 
   //  }, 100000)
@@ -79,11 +80,11 @@ export default function Wallet(props) {
     const worth = wallet.map( crypto => findCurrentPrice( crypto.id ) * crypto.amount ).reduce( ( prev, curr ) => prev + curr, 0 )
     switch (calc) {
       case 'total':
-        return convertToCurrency( props.settings.currency.symbol, total, props.settings.decimals )          
+        return convertToCurrency( context.settings.currency.symbol, total, context.settings.decimals )          
         case 'worth':
-          return convertToCurrency( props.settings.currency.symbol, worth, props.settings.decimals )   
+          return convertToCurrency( context.settings.currency.symbol, worth, context.settings.decimals )   
       default:
-        return convertToCurrency( props.settings.currency.symbol, worth - total, props.settings.decimals )
+        return convertToCurrency( context.settings.currency.symbol, worth - total, context.settings.decimals )
     }
   }
 
@@ -111,9 +112,9 @@ export default function Wallet(props) {
               <td><img src={ crypto.img } alt={ crypto.name } /></td>
               <td>{ crypto.name }</td>
               <td>{ crypto.amount }</td>
-              <td>{ convertToCurrency( props.settings.currency.symbol, crypto.avgCoinPrice, props.settings.decimals ) }</td>
-              <td>{ convertToCurrency( props.settings.currency.symbol, crypto.totalPrice, props.settings.decimals ) }</td>
-              <td>{ convertToCurrency( props.settings.currency.symbol, currentPrice, props.settings.decimals ) }</td>
+              <td>{ convertToCurrency( context.settings.currency.symbol, crypto.avgCoinPrice, context.settings.decimals ) }</td>
+              <td>{ convertToCurrency( context.settings.currency.symbol, crypto.totalPrice, context.settings.decimals ) }</td>
+              <td>{ convertToCurrency( context.settings.currency.symbol, currentPrice, context.settings.decimals ) }</td>
               <td><FontAwesomeIcon 
                 className = 'wallet--icon'
                 icon = { faWallet } 
@@ -147,8 +148,8 @@ export default function Wallet(props) {
           name = { popup.name } 
           img = { popup.img } 
           price = { popup.price } 
-          symbol = { props.settings.currency.symbol }
-          decimals = { props.settings.decimals }
+          symbol = { context.settings.currency.symbol }
+          decimals = { context.settings.decimals }
           handlePopup = { () => handlePopup() }
         /> }
     </div>

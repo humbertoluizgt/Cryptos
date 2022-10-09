@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css'
+import { Context } from '../../context/ThemeContext';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins, faWallet, faGear } from '@fortawesome/free-solid-svg-icons'
 
-
-
-function Navbar( props ) {
+function Navbar() {
+  const context = useContext(Context)   
   return (
-    <header className={ props.settings.darkMode? 'navbar--header dark-nav' : 'navbar--header' }>
+    <header className={ context.settings.darkMode? 'navbar--header dark-nav' : 'navbar--header' }>
       <nav className='navbar--nav'>
         <Link 
           className='navbar--nav-button'

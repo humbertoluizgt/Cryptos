@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../context/ThemeContext'
 import './Settings.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faToggleOff } from '@fortawesome/free-solid-svg-icons'
 import { faToggleOn } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function Settings( props ) {
+export default function Settings() {
+  const context = useContext(Context)   
+
   //options for decimal cases
   const decimalsOptions = [0, 1, 2, 3, 4, 5]
   //options for currency
@@ -31,22 +34,22 @@ export default function Settings( props ) {
           <div>
             <FontAwesomeIcon
               id='dark-mode-icon' 
-              icon={props.settings.darkMode? faToggleOn : faToggleOff} 
-              size={'3x'} 
+              icon={ context.settings.darkMode? faToggleOn : faToggleOff } 
+              size={ '3x' } 
               className='settings--dark-mode-icon'
-              onClick={props.handleSettings} 
+              onClick={ event => context.handleSettings(event) } 
             />
           </div>       
           
-        <h4>{props.settings.darkMode? 'ON' : 'OFF'}</h4>
+        <h4>{context.settings.darkMode? 'ON' : 'OFF'}</h4>
       </div>
       <div className='settings--currency'>
         <h3>Currency:</h3>
         <select
           name='currency'
           id='currency'
-          value={ JSON.stringify(props.settings.currency) }
-          onChange={ props.handleSettings }>  
+          value={ JSON.stringify(context.settings.currency) }
+          onChange={ event => context.handleSettings(event) }>  
           { currencyOptions.map( ( curr, idx ) => {  
             return (
               <option 
@@ -63,8 +66,8 @@ export default function Settings( props ) {
         <select 
           name='decimals' 
           id='decimals' 
-          value={ props.settings.decimals }
-          onChange={ props.handleSettings }> 
+          value={ context.settings.decimals }
+          onChange={ event => context.handleSettings(event) }> 
           { decimalsOptions.map( value => {  
             return (
               <option 

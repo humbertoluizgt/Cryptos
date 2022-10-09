@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './CryptoCard.css'
+import { Context } from '../../context/ThemeContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as faSolid, faWallet } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import { convertToCurrency } from '../../helper/helper'
 
 export default function Card( props ) {
+  const context = useContext(Context)
   return (
-    <section className={ props.settings.darkMode? 'crypto_card--card dark-card' : 'crypto_card--card' }>
+    <section className={ context.settings.darkMode? 'crypto_card--card dark-card' : 'crypto_card--card' }>
       <div className='crypto_card--card-img'>
         <img src={ props.data.image } alt={ props.data.id } />          
       </div>
@@ -37,7 +39,7 @@ export default function Card( props ) {
       </div>
       <div className='crypto_card--card-price'>
           <h1>
-            { convertToCurrency( props.settings.currency.symbol, props.data.current_price, props.settings.decimals ) }
+            { convertToCurrency( context.settings.currency.symbol, props.data.current_price, context.settings.decimals ) }
           </h1>
           <h2 style={ { color: props.data.market_cap_change_percentage_24h > 0? 'rgb(51, 192, 51)' : 'red' } }>
             { props.data.market_cap_change_percentage_24h.toFixed(2) }%

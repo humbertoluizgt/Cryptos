@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import './Market.css'
+import { Context } from '../../context/ThemeContext';
 import Card from '../../components/CryptoCard/Card';
 import Modal from '../../components/Modal/Modal';
 import { nanoid } from 'nanoid'
@@ -8,7 +9,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 //It is important to keep consistency throught out the code, 
 //therefore I should have used the function components here as well. 
-//However, my purpose here is to show that I can handle class components as well.
+//However, my purpose here is to show that I can also handle class components.
 
 class Home extends Component {
   state = {
@@ -16,6 +17,8 @@ class Home extends Component {
     sortBy: 'All Assets',    
     filterBy: { cryptoName: '' }
   }
+
+  static contextType = Context
 
   componentDidMount = () => {
     this.fetchCryptos()
@@ -27,7 +30,7 @@ class Home extends Component {
 
   //fetch data from API
   fetchCryptos = () => {
-    fetch( `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.props.settings.currency.code}` )
+    fetch( `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${this.context.settings.currency.code}` )
       .then( response => response.json())
       .then ( data => this.setState( { dataAPI: data } ) )
   }
@@ -42,7 +45,7 @@ class Home extends Component {
     return (
       <>
         <div className='home--controls'>
-          <div className={ this.props.settings.darkMode? 'home--search dark-home' : 'home--search' }>
+          <div className={ this.context.settings.darkMode? 'home--search dark-home' : 'home--search' }>
             <button className='home--search-button'>
               <FontAwesomeIcon icon={faMagnifyingGlass} size={'lg'}/>
             </button>
@@ -81,7 +84,6 @@ class Home extends Component {
         <div className='home--cryptos-list'>
           <ListCryptos 
             state={ this.state }
-            settings={ this.props.settings }
           />
         </div>       
       </>
@@ -163,7 +165,6 @@ class ListCryptos extends Component {
         { cryptoList.map( crypto => (      
           <Card
             key={ nanoid() }
-            settings={ this.props.settings } 
             data={ crypto } 
             favourites={ this.state.favourites } 
             handleFavourite={ id => this.handleFavourite( id ) }
@@ -175,8 +176,6 @@ class ListCryptos extends Component {
               name={ this.state.name } 
               img={ this.state.img } 
               price={ this.state.price } 
-              symbol= { this.props.settings.currency.symbol }
-              decimals= { this.props.settings.decimals }
               handlePopup = { () => this.handlePopup() }
             /> 
         }

@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Modal.css'
+import { Context } from '../../context/ThemeContext'
 import { convertToCurrency } from '../../helper/helper'
 
 export default function AddToWallet( props ) {
+
+  const context = useContext(Context)
 
   //state to save user inputs
   const [ userInput, setUserInput ] = useState( { 
@@ -119,7 +122,7 @@ export default function AddToWallet( props ) {
       if ( isExisting.length <= 0 ) {        
         return '0'
       } else {
-        return convertToCurrency( props.symbol, isExisting[0].avgCoinPrice, props.decimals )
+        return convertToCurrency( context.settings.currency.symbol, isExisting[0].avgCoinPrice, context.settings.decimals )
       }
     } else {
       return '0'
@@ -143,7 +146,7 @@ export default function AddToWallet( props ) {
         <section className='add_to_wallet--content-left'>
           <img src={ props.img } alt={ props.name } />
           <h2>{ props.name }</h2>
-          <h2>Current Price: { convertToCurrency( props.symbol, props.price, props.decimals ) }</h2> 
+          <h2>Current Price: { convertToCurrency( context.settings.currency.symbol, props.price, context.settings.decimals ) }</h2> 
           <div className='add_to_wallet--stats'>
             <h3>Total in Wallet: { amountInWallet() }</h3>
             <h3>Avg price: { avgPrice() }</h3>
@@ -169,7 +172,7 @@ export default function AddToWallet( props ) {
               min={ 0 }
               onChange={ event => handleChange( event ) } />
             <h2>Total Value:</h2>
-            <h2>{ convertToCurrency( props.symbol, totalPrice, props.decimals ) }</h2>            
+            <h2>{ convertToCurrency( context.settings.currency.symbol, totalPrice, context.settings.decimals ) }</h2>            
           </div>          
         </section>
       </div>
